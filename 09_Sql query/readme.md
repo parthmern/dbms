@@ -187,3 +187,60 @@ SELECT * FROM customer WHERE name LIKE 'A__n';
 
 
 ```
+
+#### ascending and descending
+
+```
+
+-- Ascending Order (default):
+-- The following query selects all records from the `Worker` table and orders them by the `salary` column in ascending order by default.
+SELECT * FROM Worker ORDER BY salary;
+
+-- Ascending Order (explicit):
+-- The following query is equivalent to the previous one but explicitly specifies ascending order using the `ASC` keyword.
+SELECT * FROM Worker ORDER BY salary ASC;
+
+-- Descending Order:
+-- The following query selects all records from the `Worker` table and orders them by the `salary` column in descending order using the `DESC` keyword.
+SELECT * FROM Worker ORDER BY salary DESC;
+
+```
+
+#### distinct
+
+```
+SELECT DISTINCT department FROM worker;
+
+- total departments in one by one row : HR, Admin, Finance, Admin, HR, Admin
+- answer : HR, Admin, Finance
+ 
+```
+
+#### GROUP BY with aggregation
+
+```
+
+-- [video] https://youtu.be/FztbYXeOEQ4?si=cuzv77BsfEp-oA5l
+
+-- GROUP BY
+SELECT department FROM Worker GROUP BY department ;
+-- if i am not using any aggregation here so it acts as DISTINCT
+
+-- here count number per department
+SELECT department, COUNT(department) FROM Worker GROUP BY department ;
+-- here staring department and after grp by department is going to be same
+
+-- min salary per department
+SELECT department, COUNT(salary) FROM Worker GROUP BY department ;
+
+-- COUNT(), SUM(), AVG(), MIN(), MAX()
+
+------------------------------------------------------------------------------
+
+-- HAVING key word 
+-- same as WHERE but while using GROUP BY we have to use having insted of where
+
+SELECT department, SUM(salary) FROM Worker GROUP BY department HAVING COUNT(salary) > 40000 ;
+
+```
+
