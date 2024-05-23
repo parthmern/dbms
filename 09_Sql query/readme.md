@@ -92,3 +92,42 @@ INSERT INTO Bonus (
 (2, 3500, '2011-06-16');
 
 ```
+
+## Retrival examples
+
+```
+
+-- Adding two numbers
+SELECT 11 + 12;
+-- This query will return the sum of 11 and 12, which is 23.
+
+-- Getting the current date and time
+SELECT NOW();
+-- This query will return the current date and time when the query is executed.
+
+-- Converting a string to uppercase
+SELECT UCASE('parth');
+-- This query will convert the string 'parth' to uppercase, returning 'PARTH'.
+
+-- Converting a string to lowercase
+SELECT LCASE('PARTH');
+-- This query will convert the string 'PARTH' to lowercase, returning 'parth'.
+
+-- Selecting all columns from the Worker table
+SELECT * FROM Worker;
+-- This query will return all records and all columns from the Worker table.
+
+-- Selecting all records from Worker where the DEPARTMENT is 'HR'
+SELECT * FROM Worker WHERE DEPARTMENT = 'HR';
+-- This query will return all records from the Worker table where the DEPARTMENT column is 'HR'.
+
+-- Selecting all records from Worker where the SALARY is greater than 8000
+SELECT * FROM Worker WHERE SALARY > 8000;
+-- This query will return all records from the Worker table where the SALARY column is greater than 8000.
+
+-- Selecting specific columns (FIRST_NAME and WORKER_ID) from Worker where SALARY is greater than 8000
+SELECT FIRST_NAME, WORKER_ID FROM Worker WHERE SALARY > 8000;
+-- This query will return only the FIRST_NAME and WORKER_ID columns from the Worker table for records where the SALARY column is greater than 8000.
+
+
+```
