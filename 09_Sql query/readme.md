@@ -130,4 +130,60 @@ SELECT FIRST_NAME, WORKER_ID FROM Worker WHERE SALARY > 8000;
 -- This query will return only the FIRST_NAME and WORKER_ID columns from the Worker table for records where the SALARY column is greater than 8000.
 
 
+-- BETWEEN SOMETHING RANGE
+SELECT * FROM Worker WHERE SALARY BETWEEN 80000 AND 300000 ;
+-- here 80000 and 300000 is inclusive
+
+-- Using OR
+SELECT * FROM Worker WHERE DEPARTMENT = 'HR' OR DEPARTMENT = 'Admin' OR DEPARTMENT = 'Account';
+
+-- to reduce multiple OR
+-- Using IN
+SELECT * FROM Worker WHERE DEPARTMENT IN ('HR', 'Admin', 'Account');
+
+-- NOT 
+-- ! ( IN ('HR', 'Admin', 'Account') )
+SELECT * FROM Worker WHERE DEPARTMENT NOT IN ('HR', 'Admin', 'Account');
+
+-- AND
+SELECT * FROM Worker WHERE DEPARTMENT = 'HR' AND SALARY > 80000;
+
+-- IS NULL
+-- showing null values from table row
+SELECT * FROM Worker WHERE SALARY IS NULL;
+
+```
+
+#### wildcards
+
+```
+
+-- Using '%' Wildcard:
+-- The '%' wildcard represents any number of characters (including zero) from 0 to n.
+-- It is similar to the '*' asterisk in regular expressions.
+
+-- Example:
+-- Selecting all records from the `customer` table where the `name` ends with 'p'.
+SELECT * FROM customer WHERE name LIKE '%p';
+
+-- Selecting all records from the `customer` table where the `name` contains 'John' anywhere in the string.
+SELECT * FROM customer WHERE name LIKE '%John%';
+
+-- Using '_' Wildcard:
+-- The '_' wildcard represents exactly one character.
+
+-- Example:
+-- Selecting all records from the `customer` table where the `name` has exactly three characters and starts with 'J'.
+SELECT * FROM customer WHERE name LIKE 'J__';
+
+-- Combining '%' and '_' Wildcards:
+-- The combination of '%' and '_' can be used to match specific patterns.
+
+-- Example:
+-- Selecting all records from the `customer` table where the `name` starts with 'A', followed by any two characters, and ends with 'n'.
+SELECT * FROM customer WHERE name LIKE 'A__n';
+
+-- Note: The '_' wildcard matches exactly one character, while the '%' wildcard matches any number of characters (including zero).
+
+
 ```
