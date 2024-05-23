@@ -50,3 +50,5 @@ CREATE TABLE Title (
 );
 
 ```
+
+![image](https://github.com/parthmern/dbms/assets/125397720/ce8170c9-5d35-46b7-ad5a-761b6cd550dd)
