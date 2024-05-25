@@ -244,3 +244,83 @@ SELECT department, SUM(salary) FROM Worker GROUP BY department HAVING COUNT(sala
 
 ```
 
+# DDL constraints / keys
+
+#### primary key
+```
+CREATE TABLE Customer (
+    id INT NOT NULL PRIMARY KEY,
+    branch_id INT,
+    first_name CHAR(50),
+    last_name CHAR(50)
+);
+
+---------------------------------------
+
+CREATE TABLE Customer (
+    id INT NOT NULL,
+    branch_id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    PRIMARY KEY (id)
+);
+
+```
+
+#### forign key
+
+```
+CREATE TABLE Orders (
+    id INT NOT NULL PRIMARY KEY,
+    delivery_date DATE,
+    order_placed_date DATE,
+    cust_id INT,
+    FOREIGN KEY (cust_id) REFERENCES Customer(id)
+);
+
+-- here forign key is "cust_id" which is refering to the customer table's primary key named "id"
+```
+
+#### unique
+```
+CREATE TABLE Customer (
+    ....
+    email VARCHAR(1024) UNIQUE
+);
+```
+
+#### check / validation CONSTRAINT
+```
+CREATE TABLE Customer (
+    id INT NOT NULL PRIMARY KEY,
+
+    age INT,
+    CONSTRAINT age_check CHECK (age > 12)
+);
+
+-- CONSTRAINT age_check : This names the constraint as age_check
+-- CHECK (age > 12) : This specifies that the age column must contain values greater than 12.
+
+-------------------------------------------------------------
+
+-- “age_check”, can also avoid this, MySQL generates name of constraint automatically.
+
+CREATE TABLE Customer (
+    id INT NOT NULL PRIMARY KEY,
+   
+    age INT,
+    CHECK (age > 12)
+);
+
+```
+
+#### default
+
+```
+CREATE TABLE account (
+    id INT NOT NULL PRIMARY KEY,
+    ...
+    
+    saving_rate DOUBLE NOT NULL DEFAULT 4.25
+);
+```
