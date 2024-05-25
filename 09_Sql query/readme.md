@@ -320,7 +320,46 @@ CREATE TABLE Customer (
 CREATE TABLE account (
     id INT NOT NULL PRIMARY KEY,
     ...
-    
+
     saving_rate DOUBLE NOT NULL DEFAULT 4.25
 );
+```
+
+# ALTER operation
+
+
+#### ADD - new column
+```
+ALTER TABLE customer
+ADD age INT NOT NULL;
+```
+
+#### MODIFY - Change datatype of an attribute.
+```
+ALTER TABLE customer
+MODIFY price DOUBLE;
+-- float to double datatype
+-- the absence of DEFAULT and NOT NULL specifications indicates that the column will retain its existing settings for these properties
+
+```
+
+#### CHANGE column name
+```
+ALTER TABLE customer
+CHANGE COLUMN name customer_name VARCHAR(1024);
+
+-- If you want to keep the existing data type, you can omit the data type specification, and MySQL will retain the existing data type for the column.
+
+```
+
+#### DROP COLUMN
+```
+ALTER TABLE customer 
+DROP COLUMN col_name;
+
+```
+
+#### RENAME the table
+```
+ALTER TABLE oldTableName RENAME TO newTableName;
 ```
