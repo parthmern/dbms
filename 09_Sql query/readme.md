@@ -363,3 +363,71 @@ DROP COLUMN col_name;
 ```
 ALTER TABLE oldTableName RENAME TO newTableName;
 ```
+
+# DML - data manuplation language
+
+#### INSERT
+```
+INSERT INTO table_name (col1, col2, col3)
+VALUES 
+    (v1, v2, v3),
+    (val1, val2, val3);
+
+---------------------------------------------------------
+
+INSERT INTO table_name 
+VALUES 
+    (v1, v2, v3),
+    (val1, val2, val3);
+
+-- here col names are not imp it will take it automatically values by using the predefined cols order
+```
+
+#### UPDATE
+```
+UPDATE table_name
+SET col1Name = 1, col2Name = 'abc'
+WHERE id = 1;
+```
+
+##### ON UPDATE CASCADE
+```
+-- Can be added to the table while creating constraints. Suppose there is a situation where we have two tables
+such that primary key of one table is the foreign key for another table. if we update the primary key of the first
+table then using the ON UPDATE CASCADE foreign key of the second table automatically get updated.
+
+CREATE TABLE customers (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE
+);
+
+
+-- inserting
+INSERT INTO customers (id, name) VALUES (1, 'Alice');
+INSERT INTO orders (order_id, customer_id, order_date) VALUES (101, 1, '2024-05-25');
+
+-- updating  
+UPDATE customers SET id = 2 WHERE id = 1;
+
+-- After this update, the customer_id in the orders table will automatically be updated from 1 to 2 because of the ON UPDATE CASCADE clause
+```
+
+#### DELETE row
+```
+DELETE FROM table_name
+WHERE id = 1;
+
+-- IF YOU DO THIS WITHOUT CONDITION then it is going to delete all cols
+```
+
+##### DELETE CASCADE - (to overcome DELETE constraint of Referential constraints)
+```
+
+```
