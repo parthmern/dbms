@@ -429,5 +429,50 @@ WHERE id = 1;
 
 ##### DELETE CASCADE - (to overcome DELETE constraint of Referential constraints)
 ```
+CREATE TABLE customer (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE order (
+    order_id INT PRIMARY KEY,
+    delivery_date DATE,
+    cust_id INT,
+    FOREIGN KEY (cust_id) REFERENCES customer(id) ON DELETE CASCADE
+);
+
+-- The 'order' table references the 'customer' table.
+-- Using 'ON DELETE CASCADE' ensures that when a row in the 'customer' table is deleted,
+-- all related rows in the 'order' table are automatically deleted.
+```
+
+##### ON DELETE NULL - (can FK have null values?)
+```
+CREATE TABLE customer (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+-- The 'order' table references the 'customer' table.
+-- Using 'ON DELETE SET NULL' ensures that when a row in the 'customer' table is deleted,
+-- the 'cust_id' in the 'order' table is set to NULL.
+CREATE TABLE `order` (
+    order_id INT PRIMARY KEY,
+    delivery_date DATE,
+    cust_id INT,
+    FOREIGN KEY (cust_id) REFERENCES customer(id) ON DELETE SET NULL
+);
+
+```
+
+#### REPLACE - if data is already present then replace that data OR if data is not there then add that data
+
+```
+-- if data is already present then replace that data OR if data is not there then add that data
+-- if it behaves like replace then all old entries of that row becomes NLLL
+
+REPLACE INTO student (id, class) VALUES (2, 11), (3, 8);
+
+REPLACE INTO student SET id = 4, class = 3;
 
 ```
