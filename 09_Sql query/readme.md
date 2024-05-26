@@ -456,6 +456,7 @@ CREATE TABLE customer (
 -- The 'order' table references the 'customer' table.
 -- Using 'ON DELETE SET NULL' ensures that when a row in the 'customer' table is deleted,
 -- the 'cust_id' in the 'order' table is set to NULL.
+
 CREATE TABLE `order` (
     order_id INT PRIMARY KEY,
     delivery_date DATE,
