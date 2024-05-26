@@ -2,6 +2,7 @@
 
 ## Inner join
 
+![image](https://github.com/parthmern/dbms/assets/125397720/311a2bd9-ef2c-4386-8124-52cd38fdc951)
 
 
 ```
