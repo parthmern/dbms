@@ -35,6 +35,8 @@ ON a.USER_ID = b.USER_ID;
 
 ## CROSS jOIN
 
+![cross-join-meaning](https://github.com/parthmern/dbms/assets/125397720/109df4d8-6aef-4677-a6e3-59e7d63ab175)
+
 ```
 SELECT column_list FROM table1 CROSS JOIN table2;
 
@@ -69,6 +71,8 @@ WHERE artist.id = album.artist_id;
 article = https://medium.com/@ritusantra/sql-set-operators-ms-sql-server-9ee311f48ee6
 ```
 
+![image](https://github.com/parthmern/dbms/assets/125397720/48c6bb77-6538-4433-a744-28ea1bc7fba0)
+
 
 ## UNION
 
@@ -77,6 +81,9 @@ SELECT * FROM table1
 UNION
 SELECT * FROM table2;
 ```
+
+![image](https://github.com/parthmern/dbms/assets/125397720/d27575eb-aa33-467c-b0e6-8781dfe7a8fe)
+
 
 ## INTERSECT
 
@@ -95,8 +102,12 @@ INNER JOIN table2 ON table1.id = table2.id;
 
 ```
 
-## MINUS
+![image](https://github.com/parthmern/dbms/assets/125397720/c10c39fe-5ab2-4a39-8f0b-fd7386c9171e)
+
+
+## MINUS / EXCEPT
 
 ```
 SELECT id FROM table1 LEFT JOIN table2 USING(id) WHERE table2.id IS NULL;
 ```
+![image](https://github.com/parthmern/dbms/assets/125397720/6b688e97-83ce-470d-8aff-1749c30eff52)
