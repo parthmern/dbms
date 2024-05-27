@@ -2,6 +2,7 @@
 
 ```
 scaler article = https://www.scaler.com/topics/sql/joins-in-sql/
+another = https://www.scaler.com/topics/sql/joins-in-sql/ 
 ```
 
 ##  join
@@ -67,6 +68,8 @@ WHERE artist.id = album.artist_id;
 
 # SET operations
 
+- here 2 tables are same ( like company one has employee table and company2 has employee table with same attributes so we can do set operations on them )
+
 ```
 article = https://medium.com/@ritusantra/sql-set-operators-ms-sql-server-9ee311f48ee6
 ```
@@ -111,3 +114,13 @@ INNER JOIN table2 ON table1.id = table2.id;
 SELECT id FROM table1 LEFT JOIN table2 USING(id) WHERE table2.id IS NULL;
 ```
 ![image](https://github.com/parthmern/dbms/assets/125397720/6b688e97-83ce-470d-8aff-1749c30eff52)
+
+# sub query
+
+- alternative method of joins
+- outerQuery(innerQuery)
+- Outer query depends on inner query.
+
+```
+SELECT * FROM table1 WHERE col1 IN (SELECT col1 FROM table1);
+```
