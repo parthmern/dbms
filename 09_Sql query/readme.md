@@ -491,3 +491,91 @@ REPLACE INTO student (id, class) VALUES (2, 11), (3, 8);
 REPLACE INTO student SET id = 4, class = 3;
 
 ```
+
+#### exta things
+
+```
+
+-- sub string and concate
+
+-- SUBSTR means
+-- SUBSTR(string_expression, start_position, length)
+-- SUBSTR(FIRSTNAME, 1, 1) ===> first_initial
+
+SELECT (SUBSTR(FIRSTNAME, 1, 1) || LASTNAME) AS USERNAME
+FROM employee2;
+
+-------------------------------------------------
+-- find index or postiton
+SELECT INSTR(first_name, 'b') AS position
+FROM worker
+WHERE first_name = 'Amitabh';
+
+-- give ans as 6
+
+--------------------------------------------------
+-- Limit rows
+SELECT column1, column2, ...
+FROM table_name
+LIMIT number_of_rows;
+
+SELECT *
+FROM employees
+LIMIT 5;
+-- only 5 rows shows as output even if output has more than 5 rows
+
+---------------------------------------------------
+
+-- Q-4. Write an SQL query to print the first three characters of  FIRST_NAME from Worker table.
+select substring(first_name, 1, 3) from worker;
+
+-- Q-5. Write an SQL query to find the position of the alphabet (‘b’) in the first name column ‘Amitabh’ from Worker table.
+select INSTR(first_name, 'B') from worker where first_name = 'Amitabh';
+
+-- Q-6. Write an SQL query to print the FIRST_NAME from Worker table after removing white spaces from the right side.
+select RTRIM(first_name) from worker;
+
+-- Q-7. Write an SQL query to print the DEPARTMENT from Worker table after removing white spaces from the left side.
+select LTRIM(first_name) from worker;
+
+-- Q-8. Write an SQL query that fetches the unique values of DEPARTMENT from Worker table and prints its length.
+select distinct department, LENGTH(department) from worker;
+
+-- Q-9. Write an SQL query to print the FIRST_NAME from Worker table after replacing ‘a’ with ‘A’.
+select REPLACE(first_name, 'a', 'A')  from worker;
+
+-- Q-10. Write an SQL query to print the FIRST_NAME and LAST_NAME from Worker table into a single column COMPLETE_NAME.
+-- A space char should separate them.
+select CONCAT(first_name, ' ', last_name) AS COMPLETE_NAME from worker;
+
+-- Q-20. Write an SQL query to print details of the Workers who have joined in Feb’2014.
+select * from worker where YEAR(joining_date) = 2014 AND MONTH(joining_date) = 02;
+
+-- Q-26. Write an SQL query to show only odd rows from a table.
+-- select * from worker where MOD (WORKER_ID, 2) != 0;    -- modulas
+select * from worker where MOD (WORKER_ID, 2) <> 0;       -- <> behaves like not equal
+
+-- Q-28. Write an SQL query to clone a new table from another table.
+CREATE TABLE worker_clone LIKE worker;
+INSERT INTO worker_clone select * from worker;
+select * from worker_clone;
+
+-- how to do same in single query ? 
+CREATE TABLE worker_clone AS 
+SELECT * 
+FROM worker;
+
+-- Q-31. Write an SQL query to show the current date and time.
+-- DUAL
+select curdate();
+select now();
+
+-- Q-32. Write an SQL query to show the top n (say 5) records of a table order by descending salary.
+select * from worker order by salary desc LIMIT 5;
+
+-- Q-33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
+select * from worker order by salary desc LIMIT 4,1;
+
+------------------------------------------------------
+
+```
