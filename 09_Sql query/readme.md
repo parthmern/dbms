@@ -576,6 +576,36 @@ select * from worker order by salary desc LIMIT 5;
 -- Q-33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
 select * from worker order by salary desc LIMIT 4,1;
 
+-- Q-34. Write an SQL query to determine the 5th highest salary without using LIMIT keyword.
+select salary from worker w1
+WHERE 4 = (
+SELECT COUNT(DISTINCT (w2.salary))
+from worker w2
+where w2.salary >= w1.salary
+);
+
+-- Q-35. Write an SQL query to fetch the list of employees with the same salary.
+-- using JOIN without join
+select w1.* from worker w1, worker w2 where w1.salary = w2.salary and w1.worker_id != w2.worker_id;
+
+-- Q-36. Write an SQL query to show the second highest salary from a table using sub-query.
+select max(salary) from worker
+where salary not in (select max(salary) from worker);
+
+-- Q-37. Write an SQL query to show one row twice in results from a table.
+select * from worker
+UNION ALL
+select * from worker ORDER BY worker_id;
+
+-- Q-39. Write an SQL query to fetch the first 50% records from a table.
+select * from worker where worker_id <= ( select count(worker_id)/2 from worker);
+
+-- Q-42. Write an SQL query to show the last record from a table.
+select * from worker where worker_id = (select max(worker_id) from worker);
+
+-- Q-43. Write an SQL query to fetch the first row of a table.
+select * from worker where worker_id = (select min(worker_id) from worker);
+
 ------------------------------------------------------
 
 ```
