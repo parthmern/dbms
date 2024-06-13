@@ -107,10 +107,12 @@ SELECT NOW();
 
 -- Converting a string to uppercase
 SELECT UCASE('parth');
+SELECT UPPER('PARTH');
 -- This query will convert the string 'parth' to uppercase, returning 'PARTH'.
 
 -- Converting a string to lowercase
 SELECT LCASE('PARTH');
+SELECT LOWER('PARTH');
 -- This query will convert the string 'PARTH' to lowercase, returning 'parth'.
 
 -- Selecting all columns from the Worker table
@@ -381,6 +383,18 @@ VALUES
     (val1, val2, val3);
 
 -- here col names are not imp it will take it automatically values by using the predefined cols order
+
+---------------------------------------------------------
+-- above 2 ways might not work in sql
+
+INSERT ALL 
+    INTO employees (employeenumber, firstname, lastname, email, jobtitle, officecode, reportsto, extension) 
+    VALUES (7879, 'parth', 'patel', 'prpatel52@myseneca.ca', 'Cashier', 4, 1088, 'prpatel52')
+    INTO employees (employeenumber, firstname, lastname, email, jobtitle, officecode, reportsto, extension) 
+    VALUES (7777, 'dhruv', 'desai', 'dhruv@gmail.com', 'Cashier', 5, 1088, 'dhruvdk')
+SELECT * FROM dual;
+
+
 ```
 
 #### UPDATE
